@@ -1,0 +1,531 @@
+{
+  "designSystem": {
+    "name": "LingoSwitch Landing Design System",
+    "version": "1.0.0",
+    "description": "Современная дизайн-система для лендинга изучения языков с яркими градиентами и интерактивными элементами",
+    
+    "colorPalette": {
+      "primary": {
+        "gradient": {
+          "type": "linear",
+          "direction": "135deg",
+          "stops": [
+            { "color": "#FF1B6B", "position": "0%" },
+            { "color": "#45CAFF", "position": "100%" }
+          ]
+        },
+        "solid": {
+          "pink": "#FF1B6B",
+          "blue": "#45CAFF",
+          "purple": "#6B46C1",
+          "orange": "#FF8A00"
+        }
+      },
+      "secondary": {
+        "yellow": "#FFD700",
+        "lightBlue": "#87CEEB",
+        "coral": "#FF6B6B"
+      },
+      "neutral": {
+        "white": "#FFFFFF",
+        "lightGray": "#F8F9FA",
+        "darkText": "#1A1A1A",
+        "mediumText": "#4A4A4A"
+      }
+    },
+
+    "typography": {
+      "fontFamily": {
+        "primary": "Inter, system-ui, -apple-system, sans-serif",
+        "display": "Inter, system-ui, -apple-system, sans-serif"
+      },
+      "fontSizes": {
+        "hero": "clamp(2.5rem, 5vw, 4rem)",
+        "h1": "clamp(2rem, 4vw, 3rem)",
+        "h2": "clamp(1.5rem, 3vw, 2rem)",
+        "h3": "clamp(1.25rem, 2.5vw, 1.5rem)",
+        "body": "1rem",
+        "small": "0.875rem"
+      },
+      "fontWeights": {
+        "light": 300,
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700,
+        "extrabold": 800
+      },
+      "lineHeights": {
+        "tight": 1.2,
+        "normal": 1.5,
+        "relaxed": 1.7
+      }
+    },
+
+    "spacing": {
+      "scale": "1rem",
+      "values": {
+        "xs": "0.25rem",
+        "sm": "0.5rem",
+        "md": "1rem",
+        "lg": "1.5rem",
+        "xl": "2rem",
+        "2xl": "3rem",
+        "3xl": "4rem",
+        "4xl": "6rem"
+      }
+    },
+
+    "borderRadius": {
+      "sm": "0.375rem",
+      "md": "0.5rem",
+      "lg": "0.75rem",
+      "xl": "1rem",
+      "2xl": "1.5rem",
+      "3xl": "2rem",
+      "full": "9999px"
+    },
+
+    "shadows": {
+      "soft": "0 4px 20px rgba(0, 0, 0, 0.1)",
+      "medium": "0 8px 30px rgba(0, 0, 0, 0.15)",
+      "strong": "0 12px 40px rgba(0, 0, 0, 0.2)",
+      "colored": "0 8px 30px rgba(255, 27, 107, 0.3)"
+    },
+
+    "components": {
+      "hero": {
+        "layout": "full-width",
+        "background": {
+          "type": "gradient",
+          "gradient": "primary.gradient"
+        },
+        "padding": "4xl 2xl",
+        "borderRadius": "3xl",
+        "textAlign": "left",
+        "elements": {
+          "brand": {
+            "fontSize": "h2",
+            "fontWeight": "bold",
+            "color": "white",
+            "position": "top-left",
+            "marginBottom": "lg"
+          },
+          "title": {
+            "fontSize": "hero",
+            "fontWeight": "extrabold",
+            "color": "white",
+            "lineHeight": "tight",
+            "marginBottom": "lg",
+            "maxWidth": "60%"
+          },
+          "cta": {
+            "backgroundColor": "secondary.yellow",
+            "color": "darkText",
+            "padding": "md xl",
+            "borderRadius": "full",
+            "fontSize": "body",
+            "fontWeight": "semibold",
+            "position": "top-right",
+            "shadow": "medium",
+            "hover": {
+              "transform": "translateY(-2px)",
+              "shadow": "strong"
+            }
+          },
+          "illustration": {
+            "position": "right",
+            "style": "modern-character-illustration",
+            "size": "large",
+            "background": "semi-transparent-overlay",
+            "borderRadius": "2xl",
+            "image": "hero-girl.png",
+            "description": "Девушка в наушниках машет рукой, приветствуя пользователя"
+          },
+          "decorativeElements": {
+            "soundWaves": {
+              "position": "around-character",
+              "color": "orange",
+              "style": "simple-lines"
+            },
+            "letterA": {
+              "position": "top-right-of-character",
+              "fontSize": "h1",
+              "color": "white",
+              "opacity": "0.8"
+            }
+          }
+        }
+      },
+
+      "card": {
+        "variants": {
+          "problem": {
+            "background": {
+              "type": "gradient",
+              "gradient": {
+                "type": "linear",
+                "direction": "135deg",
+                "stops": [
+                  { "color": "#FF1B6B", "position": "0%" },
+                  { "color": "#FF8A00", "position": "100%" }
+                ]
+              }
+            },
+            "padding": "xl",
+            "borderRadius": "2xl",
+            "textColor": "white",
+            "header": {
+              "backgroundColor": "rgba(255, 255, 255, 0.2)",
+              "padding": "sm md",
+              "borderRadius": "lg",
+              "marginBottom": "lg",
+              "display": "inline-flex",
+              "alignItems": "center",
+              "gap": "sm"
+            },
+            "content": {
+              "bottomSection": {
+                "backgroundColor": "rgba(255, 255, 255, 0.9)",
+                "padding": "lg",
+                "borderRadius": "xl",
+                "textColor": "darkText",
+                "marginTop": "lg"
+              }
+            }
+          },
+          "solution": {
+            "background": {
+              "type": "gradient",
+              "gradient": {
+                "type": "linear",
+                "direction": "135deg",
+                "stops": [
+                  { "color": "#FFD700", "position": "0%" },
+                  { "color": "#FF8A00", "position": "100%" }
+                ]
+              }
+            },
+            "padding": "xl",
+            "borderRadius": "2xl",
+            "textColor": "darkText",
+            "header": {
+              "backgroundColor": "rgba(255, 255, 255, 0.3)",
+              "padding": "sm md",
+              "borderRadius": "lg",
+              "marginBottom": "lg",
+              "display": "inline-flex",
+              "alignItems": "center",
+              "gap": "sm"
+            },
+            "decorativeElements": {
+              "lightBulb": {
+                "position": "top-right",
+                "style": "glowing-effect",
+                "rays": "radiating-lines"
+              }
+            }
+          },
+          "benefits": {
+            "background": {
+              "type": "gradient",
+              "gradient": {
+                "type": "linear",
+                "direction": "135deg",
+                "stops": [
+                  { "color": "#6B46C1", "position": "0%" },
+                  { "color": "#FF1B6B", "position": "100%" }
+                ]
+              }
+            },
+            "padding": "xl",
+            "borderRadius": "2xl",
+            "textColor": "white",
+            "header": {
+              "backgroundColor": "secondary.yellow",
+              "padding": "sm md",
+              "borderRadius": "lg",
+              "marginBottom": "lg",
+              "display": "inline-flex",
+              "alignItems": "center",
+              "gap": "sm",
+              "textColor": "darkText"
+            },
+            "featureIcons": {
+              "layout": "horizontal-row",
+              "gap": "lg",
+              "marginTop": "xl",
+              "items": [
+                {
+                  "icon": "chat-bubble",
+                  "background": "coral-gradient",
+                  "label": "Interactive Lessons"
+                },
+                {
+                  "icon": "star",
+                  "background": "yellow-gradient",
+                  "label": "Personalized Plans"
+                },
+                {
+                  "icon": "chat-dots",
+                  "background": "blue-gradient",
+                  "label": "24/7 Practice"
+                }
+              ]
+            }
+          },
+          "faq": {
+            "background": {
+              "type": "gradient",
+              "gradient": {
+                "type": "linear",
+                "direction": "135deg",
+                "stops": [
+                  { "color": "#45CAFF", "position": "0%" },
+                  { "color": "#6B46C1", "position": "100%" }
+                ]
+              }
+            },
+            "padding": "xl",
+            "borderRadius": "2xl",
+            "textColor": "white",
+            "header": {
+              "backgroundColor": "rgba(255, 255, 255, 0.2)",
+              "padding": "sm md",
+              "borderRadius": "lg",
+              "marginBottom": "lg",
+              "display": "inline-flex",
+              "alignItems": "center",
+              "gap": "sm"
+            },
+            "layout": {
+              "type": "two-column",
+              "leftColumn": {
+                "items": [
+                  {
+                    "question": "How do I start?",
+                    "answer": "Sign up and choose your language!",
+                    "icon": "checkmark"
+                  },
+                  {
+                    "question": "What languages can I learn?",
+                    "answer": "We offer courses in 20+ languages!",
+                    "icon": "checkmark"
+                  }
+                ]
+              },
+              "rightColumn": {
+                "items": [
+                  {
+                    "question": "How do I start?",
+                    "answer": "Sign up and choose your language!"
+                  },
+                  {
+                    "question": "What languages can I learn?",
+                    "answer": "We offer courses in 20+ languages!"
+                  },
+                  {
+                    "question": "Is there a free trial?",
+                    "answer": "Yes, get 7 days free access!"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "common": {
+          "shadow": "medium",
+          "transition": "all 0.3s ease",
+          "hover": {
+            "transform": "translateY(-4px)",
+            "shadow": "strong"
+          }
+        }
+      },
+
+      "icon": {
+        "variants": {
+          "feature": {
+            "size": "3xl",
+            "style": "colorful-gradient",
+            "background": "circular",
+            "padding": "md"
+          },
+          "emoji": {
+            "size": "2xl",
+            "style": "native-emoji"
+          }
+        }
+      },
+
+      "button": {
+        "variants": {
+          "primary": {
+            "background": "secondary.yellow",
+            "color": "darkText",
+            "padding": "md xl",
+            "borderRadius": "full",
+            "fontWeight": "semibold",
+            "shadow": "soft",
+            "hover": {
+              "transform": "translateY(-2px)",
+              "shadow": "medium"
+            }
+          },
+          "secondary": {
+            "background": "transparent",
+            "color": "white",
+            "border": "2px solid white",
+            "padding": "md xl",
+            "borderRadius": "full",
+            "fontWeight": "semibold"
+          }
+        }
+      },
+
+      "section": {
+        "variants": {
+          "hero": {
+            "background": "primary.gradient",
+            "padding": "4xl 2xl",
+            "borderRadius": "3xl",
+            "margin": "0 0 2xl 0"
+          },
+          "content": {
+            "background": "transparent",
+            "padding": "2xl",
+            "margin": "2xl 0"
+          }
+        }
+      }
+    },
+
+    "layout": {
+      "container": {
+        "maxWidth": "1200px",
+        "margin": "0 auto",
+        "padding": "0 2xl"
+      },
+      "grid": {
+        "columns": {
+          "mobile": 1,
+          "tablet": 2,
+          "desktop": 2
+        },
+        "gap": "xl"
+      },
+      "breakpoints": {
+        "mobile": "320px",
+        "tablet": "768px",
+        "desktop": "1024px",
+        "wide": "1200px"
+      }
+    },
+
+    "animations": {
+      "transitions": {
+        "fast": "0.15s ease",
+        "normal": "0.3s ease",
+        "slow": "0.5s ease"
+      },
+      "effects": {
+        "hover": {
+          "transform": "translateY(-4px)",
+          "transition": "normal"
+        },
+        "fadeIn": {
+          "opacity": "0 to 1",
+          "duration": "normal"
+        },
+        "slideUp": {
+          "transform": "translateY(20px) to translateY(0)",
+          "duration": "normal"
+        }
+      }
+    },
+
+    "patterns": {
+      "gradientOverlay": {
+        "description": "Использование градиентных фонов для создания визуальной иерархии",
+        "implementation": "Каждая секция имеет уникальный градиент, создающий визуальное разделение"
+      },
+      "cardBasedLayout": {
+        "description": "Контент организован в карточки с округлыми углами",
+        "implementation": "Все основные блоки контента представлены как карточки с градиентными фонами"
+      },
+      "colorfulIcons": {
+        "description": "Использование ярких иконок и эмодзи для улучшения UX",
+        "implementation": "Иконки имеют градиентные фоны и современный стиль"
+      },
+      "responsiveGrid": {
+        "description": "Адаптивная сетка, которая перестраивается на разных экранах",
+        "implementation": "2-колоночная сетка на десктопе, 1-колоночная на мобильных"
+      },
+      "layeredDesign": {
+        "description": "Многослойная структура с полупрозрачными элементами",
+        "implementation": "Заголовки карточек имеют полупрозрачные фоны, создающие глубину"
+      },
+      "semanticColors": {
+        "description": "Цветовое кодирование секций по смыслу",
+        "implementation": "Problem - красно-оранжевый, Solution - желто-оранжевый, Benefits - фиолетово-розовый, FAQ - сине-фиолетовый"
+      },
+      "illustrativeElements": {
+        "description": "Использование иллюстраций и декоративных элементов",
+        "implementation": "Персонаж девушки в hero-секции, декоративные элементы (звуковые волны, буквы)"
+      },
+      "dualColumnLayout": {
+        "description": "Двухколоночная структура для FAQ секции",
+        "implementation": "Левая колонка с чекмарками, правая с полным списком вопросов"
+      }
+    },
+
+    "designPrinciples": {
+      "modernGradients": "Использование ярких градиентов для создания современного и привлекательного дизайна",
+      "visualHierarchy": "Четкая иерархия через размеры, цвета и расположение элементов",
+      "interactivity": "Hover-эффекты и анимации для улучшения пользовательского опыта",
+      "accessibility": "Контрастные цвета и читаемые шрифты для всех пользователей",
+      "consistency": "Единообразное использование компонентов и стилей по всему интерфейсу",
+      "layeredDepth": "Создание глубины через полупрозрачные слои и наложения",
+      "brandIdentity": "Четкое отображение бренда LingoSwitch в hero-секции",
+      "emotionalConnection": "Использование дружелюбных персонажей и эмодзи для создания эмоциональной связи",
+      "contentStructure": "Логическая структура Problem → Solution → Benefits → FAQ"
+    },
+
+    "assets": {
+      "images": {
+        "heroIllustration": {
+          "filename": "hero-girl.png",
+          "description": "Иллюстрация девушки в наушниках, машущей рукой",
+          "usage": "Главная иллюстрация в hero-секции",
+          "style": "Современная векторная иллюстрация с плоским дизайном",
+          "colors": ["#FF6B6B", "#45CAFF", "#6B46C1", "#FFD700"],
+          "dimensions": "Рекомендуемый размер: 300x200px или больше"
+        }
+      },
+      "iconography": {
+        "style": "Комбинация эмодзи и векторных иконок",
+        "examples": {
+          "problem": "😟 (грустное лицо)",
+          "solution": "💡 (лампочка)",
+          "benefits": "⭐ (звезда)",
+          "faq": "❓ (вопросительный знак)",
+          "checkmark": "✅ (галочка)",
+          "features": ["💬 (чат)", "⭐ (звезда)", "💬 (чат с точками)"]
+        }
+      }
+    },
+
+    "usage": {
+      "implementation": "Используйте этот JSON как референс для создания CSS-переменных, Tailwind конфигурации или styled-components",
+      "customization": "Адаптируйте цвета, размеры и компоненты под ваш бренд",
+      "maintenance": "Обновляйте дизайн-систему по мере развития продукта",
+      "keyFeatures": [
+        "Полупрозрачные заголовки карточек для создания глубины",
+        "Двухколоночная структура FAQ с разным контентом",
+        "Декоративные элементы (звуковые волны, буквы)",
+        "Брендинг LingoSwitch в hero-секции",
+        "Использование hero-girl.png для персонализации"
+      ]
+    }
+  }
+} 
