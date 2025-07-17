@@ -111,7 +111,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-blue) 100%);
-            padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-3xl) var(--spacing-2xl);
+            padding: var(--spacing-2xl) var(--spacing-2xl) 0 var(--spacing-2xl);
             border-radius: var(--radius-3xl);
             margin-bottom: var(--spacing-2xl);
             color: var(--neutral-white);
@@ -139,7 +139,7 @@
         }
         
         .hero-title {
-            font-size: clamp(3rem, 6vw, 5rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: var(--spacing-lg);
@@ -167,22 +167,31 @@
         }
         
         .hero-illustration {
-            flex: 0 0 500px;
-            height: 400px;
+            position: absolute;
+            top: 50%;
+            right: var(--spacing-3xl);
+            transform: translateY(-50%);
+            flex: none;
+            width: 450px;
+            height: 360px;
             background: transparent;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            position: relative;
             overflow: visible;
-            margin-top: var(--spacing-lg);
+            margin: 0;
+            padding: 0;
+            z-index: 2;
         }
         
         .hero-image {
-            width: 450px;
-            height: 360px;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
             object-position: bottom;
+            margin: 0;
+            padding: 0;
+            display: block;
         }
         
         .decorative-waves {
@@ -251,7 +260,7 @@
             display: inline-flex;
             align-items: center;
             gap: var(--spacing-sm);
-            font-size: var(--font-size-h3);
+            font-size: var(--font-size-body);
             font-weight: 700;
             position: absolute;
             top: 0;
@@ -398,6 +407,27 @@
         }
         
         /* Responsive Design */
+        @media (max-width: 900px) {
+            .hero-illustration {
+                width: 320px;
+                height: 220px;
+                right: var(--spacing-xl);
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-illustration {
+                position: static;
+                transform: none;
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+                justify-content: center;
+            }
+            .hero-image {
+                width: 100%;
+                height: auto;
+            }
+        }
         @media (max-width: 768px) {
             .hero-content {
                 flex-direction: column;
@@ -468,10 +498,11 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-brand">LingoSwitch</div>
-            <a href="#" class="hero-cta">Get Started</a>
+            <a href="#get-started" class="hero-cta">Get Started</a>
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">Learn a New Language Easily</h1>
+                    <h1 class="hero-title">Пополнение словарного запаса без отрыва от работы</h1>
+                    <p class="hero-desc">LingoSwitch интегрируется в привычные Telegram-каналы и плавно заменяет слова на целевом языке, позволяя учить английский на ходу</p>
                 </div>
                 <div class="hero-illustration">
                     <div class="decorative-waves">〰️〰️</div>
@@ -481,101 +512,90 @@
             </div>
         </section>
 
-        <!-- Main Content Grid -->
-        <div class="grid">
-            <!-- Problem Card -->
-            <div class="card card-problem fade-in">
-                <div class="card-header">
-                    <span class="icon-emoji">😟</span>
-                    Problem
+        <!-- Problem Section -->
+        <section class="card card-problem fade-in">
+            <div class="card-header">
+                <span class="icon-emoji">😟</span>
+                Не хватает времени на учебу?
+            </div>
+            <div class="card-content">
+                <div class="card-title">Ежедневный поток задач и срочных писем оставляет минимум времени на учебу.</div>
+                <p>Традиционные курсы и приложения требуют выделять часы на уроки и отвлекают от работы. Из-за этого новые слова быстро забываются, а уверенность при чтении деловых публикаций на иностранном языке так и не появляется.</p>
+            </div>
+        </section>
+
+        <!-- Solution Section -->
+        <section class="card card-solution fade-in">
+            <div class="card-header">
+                <span class="icon-emoji">💡</span>
+                Учитесь в своем ритме
+            </div>
+            <div class="card-content">
+                <div class="card-title">LingoSwitch превращает каждую статью и новость в Телеграме в интерактивный урок</div>
+                <p>Бот автоматически заменяет часть русских слов на английские, а затем постепенно увеличивает долю «иностранных» фраз. Такой подход обеспечивает запоминание через контекст и ассоциации, без лишних переключений между приложениями.</p>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="card card-benefits fade-in">
+            <div class="card-header">
+                <span class="icon-emoji">⭐</span>
+                Ваши преимущества
+            </div>
+            <div class="card-content">
+                <ul class="benefits-list">
+                    <li><b>Учиться без лишних усилий</b> — слово попадает в контекст привычного текста, а не в список для зубрёжки</li>
+                    <li><b>Автоматическая замена терминов</b> прямо в сообщениях Telegram</li>
+                    <li><b>Постепенное погружение</b> — доля иностранных слов растет по мере адаптации</li>
+                    <li><b>Гибкие настройки уровня замены</b>: от отдельных слов до целых предложений</li>
+                    <li><b>Усиленная ассоциация</b> — слова запоминаются надолго благодаря окружению</li>
+                    <li><b>Предложения вариантов перевода и мини-тесты</b> прямо в чате</li>
+                    <li><b>Без отвлекающих интерфейсов</b> — всё происходит в привычном мессенджере</li>
+                    <li><b>Интеграция с выбранными каналами и скрапинг новостей</b> (в разработке)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="card card-faq fade-in">
+            <div class="card-header">
+                <span class="icon-emoji">💬</span>
+                Отзывы пользователей
+            </div>
+            <div class="card-content">
+                <blockquote>«LingoSwitch сэкономил мне часы на уроках и при этом серьезно пополнил словарный запас — теперь чтение деловых статей на английском не вызывает страха.»<br><span class="review-author">— Иван, финансовый аналитик</span></blockquote>
+                <blockquote>«Сначала сомневался, что смогу учить английский без отвлечения от работы. Но ежедневные «микро-уроки» в Telegram оказались именно тем, что нужно.»<br><span class="review-author">— Мария, менеджер проектов</span></blockquote>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="card card-faq fade-in">
+            <div class="card-header">
+                <span class="icon-emoji">❓</span>
+                FAQ
+            </div>
+            <div class="faq-columns">
+                <div class="faq-left">
+                    <div class="faq-item">
+                        <div class="faq-question">Как начать пользоваться LingoSwitch?</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Можно ли задать свой словарь «известных» слов?</div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <div class="card-title">Struggling with traditional methods?</div>
-                    <div class="card-content-bottom">
-                        <div class="card-title">Struggling with traditional methods?</div>
-                        <span class="icon-emoji">😟</span>
+                <div class="faq-right">
+                    <div class="faq-item">
+                        <div class="faq-question">Будет ли бот сам «сканировать» каналы?</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Сколько стоит премиум-доступ?</div>
                     </div>
                 </div>
             </div>
-
-            <!-- Solution Card -->
-            <div class="card card-solution fade-in">
-                <div class="card-header">
-                    <span class="icon-emoji">💡</span>
-                    Solution
-                </div>
-                <div class="card-title">Try our innovative approach!</div>
-                <div class="solution-decorative">💡✨</div>
+            <div class="faq-summary" style="margin-top: var(--spacing-lg);">
+                <b>LingoSwitch помогает строить уверенность при чтении и переписке на английском через привычные задачи — без потери времени и мотивации.</b>
             </div>
-
-            <!-- Benefits Card -->
-            <div class="card card-benefits fade-in">
-                <div class="card-header">
-                    <span class="icon-emoji">⭐</span>
-                    Benefits
-                </div>
-                <div class="card-title">Interactive Lessons</div>
-                <div class="feature-icons">
-                    <div class="feature-icon">
-                        <div class="feature-icon-symbol">💬</div>
-                        <div>Interactive Lessons</div>
-                    </div>
-                    <div class="feature-icon">
-                        <div class="feature-icon-symbol">⭐</div>
-                        <div>Personalized Plans</div>
-                    </div>
-                    <div class="feature-icon">
-                        <div class="feature-icon-symbol">💬</div>
-                        <div>24/7 Practice</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Card -->
-            <div class="card card-faq fade-in">
-                <div class="card-header">
-                    <span class="icon-emoji">❓</span>
-                    FAQ
-                </div>
-                
-                <div class="faq-columns">
-                    <div class="faq-left">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>✅</span>
-                                How do I start?
-                            </div>
-                            <div class="faq-answer">Sign up and choose your language!</div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>✅</span>
-                                What languages can I learn?
-                            </div>
-                            <div class="faq-answer">We offer courses in 20+ languages!</div>
-                        </div>
-                    </div>
-
-                    <div class="faq-right">
-                        <div class="faq-item">
-                            <div class="faq-question">How do I start?</div>
-                            <div class="faq-answer">Sign up and choose your language!</div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">What languages can I learn?</div>
-                            <div class="faq-answer">We offer courses in 20+ languages!</div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">Is there a free trial?</div>
-                            <div class="faq-answer">Yes, get 7 days free access!</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
 
         <!-- Footer -->
         <footer class="footer">
