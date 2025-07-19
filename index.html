@@ -5,577 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LingoSwitch - Изучай языки легко</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Variables from Design System */
-        :root {
-            /* Colors */
-            --primary-pink: #FF1B6B;
-            --primary-blue: #45CAFF;
-            --primary-purple: #6B46C1;
-            --primary-orange: #FF8A00;
-            --secondary-yellow: #FFD700;
-            --secondary-light-blue: #87CEEB;
-            --secondary-coral: #FF6B6B;
-            --neutral-white: #FFFFFF;
-            --neutral-light-gray: #F8F9FA;
-            --neutral-dark-text: #1A1A1A;
-            --neutral-medium-text: #4A4A4A;
-            
-            /* Typography */
-            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            --font-size-hero: clamp(2.5rem, 5vw, 4rem);
-            --font-size-h1: clamp(2rem, 4vw, 3rem);
-            --font-size-h2: clamp(1.5rem, 3vw, 2rem);
-            --font-size-h3: clamp(1.25rem, 2.5vw, 1.5rem);
-            --font-size-body: 1rem;
-            --font-size-small: 0.875rem;
-            
-            /* Spacing */
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-2xl: 3rem;
-            --spacing-3xl: 4rem;
-            --spacing-4xl: 6rem;
-            
-            /* Border Radius */
-            --radius-sm: 0.375rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 0.75rem;
-            --radius-xl: 1rem;
-            --radius-2xl: 1.5rem;
-            --radius-3xl: 2rem;
-            --radius-full: 9999px;
-            
-            /* Shadows */
-            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.15);
-            --shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.2);
-            --shadow-colored: 0 8px 30px rgba(255, 27, 107, 0.3);
-            
-            /* Transitions */
-            --transition-fast: 0.15s ease;
-            --transition-normal: 0.3s ease;
-            --transition-slow: 0.5s ease;
-        }
-        
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-family);
-            line-height: 1.5;
-            color: var(--neutral-dark-text);
-            background: url('background.png') fixed center/cover no-repeat;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-        
-        /* Overlay for better content readability */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(248, 249, 250, 0.1);
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        /* Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-xl);
-        }
-        
-        .grid {
-            display: grid;
-            gap: var(--spacing-xl);
-        }
-        
-        @media (min-width: 768px) {
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-blue) 100%);
-            padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-3xl) var(--spacing-2xl);
-            border-radius: var(--radius-3xl);
-            margin-bottom: var(--spacing-2xl);
-            color: var(--neutral-white);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-brand {
-            font-size: var(--font-size-h2);
-            font-weight: 700;
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .hero-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: var(--spacing-2xl);
-            margin-top: var(--spacing-xl);
-        }
-        
-        .hero-text {
-            flex: 1;
-            max-width: 55%;
-        }
-        
-        .hero-title {
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: var(--spacing-lg);
-        }
-        
-        .hero-cta {
-            background-color: var(--secondary-yellow);
-            color: var(--neutral-dark-text);
-            padding: var(--spacing-md) var(--spacing-xl);
-            border-radius: var(--radius-full);
-            font-size: var(--font-size-body);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition-normal);
-            position: absolute;
-            top: var(--spacing-xl);
-            right: var(--spacing-xl);
-        }
-        
-        .hero-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-        
-        .hero-illustration {
-            flex: 0 0 500px;
-            height: 400px;
-            background: transparent;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            position: relative;
-            overflow: visible;
-            margin-top: var(--spacing-lg);
-        }
-        
-        .hero-image {
-            width: 450px;
-            height: 360px;
-            object-fit: contain;
-            object-position: bottom;
-        }
-        
-        .decorative-waves {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            color: var(--primary-orange);
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .decorative-letter {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: clamp(2rem, 3vw, 2.5rem);
-            font-weight: 700;
-            opacity: 0.9;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        /* Cards */
-        .card {
-            padding: var(--spacing-xl);
-            border-radius: var(--radius-2xl);
-            box-shadow: var(--shadow-medium);
-            transition: var(--transition-normal);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-strong);
-        }
-        
-        .card-problem {
-            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-orange) 100%);
-            color: var(--neutral-white);
-        }
-        
-        .card-solution {
-            background: linear-gradient(135deg, var(--secondary-yellow) 0%, var(--primary-orange) 100%);
-            color: var(--neutral-dark-text);
-        }
-        
-        .card-benefits {
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-pink) 100%);
-            color: var(--neutral-white);
-        }
-        
-        .card-faq {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
-            color: var(--neutral-white);
-        }
-        
-        .card-header {
-            background: rgba(255, 255, 255, 0.2);
-            padding: var(--spacing-md) var(--spacing-xl);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--spacing-lg);
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            font-size: var(--font-size-h3);
-            font-weight: 700;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            border-radius: 1.5rem 1.5rem 0 0;
-            padding: var(--spacing-md) var(--spacing-xl);
-            margin-bottom: 0;
-            z-index: 1;
-            background: rgba(255,255,255,0.2);
-        }
-        
-        .card-solution .card-header {
-            background: rgba(255, 255, 255, 0.3);
-        }
-        
-        .card-benefits .card-header {
-            background: var(--secondary-yellow);
-            color: var(--neutral-dark-text);
-        }
-        
-        .card-problem .card-content-bottom {
-            background: rgba(255, 255, 255, 0.9);
-            padding: var(--spacing-lg);
-            border-radius: var(--radius-xl);
-            color: var(--neutral-dark-text);
-            margin-top: var(--spacing-lg);
-        }
-        
-        .card-title {
-            font-size: var(--font-size-h2);
-            font-weight: 700;
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .card-content {
-            font-size: var(--font-size-body);
-            line-height: 1.6;
-            padding-top: 3.5rem;
-        }
-        
-        /* Icons */
-        .icon-emoji {
-            font-size: var(--font-size-h1);
-            margin-right: var(--spacing-sm);
-        }
-        
-        .feature-icons {
-            display: flex;
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-lg);
-        }
-        
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--neutral-white);
-            text-align: center;
-            flex-direction: column;
-            font-size: var(--font-size-small);
-            font-weight: 600;
-        }
-        
-        .feature-icon:nth-child(1) {
-            background: linear-gradient(135deg, var(--secondary-coral) 0%, var(--primary-pink) 100%);
-        }
-        
-        .feature-icon:nth-child(2) {
-            background: linear-gradient(135deg, var(--secondary-yellow) 0%, var(--primary-orange) 100%);
-            color: var(--neutral-dark-text);
-        }
-        
-        .feature-icon:nth-child(3) {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
-        }
-        
-        .feature-icon-symbol {
-            font-size: 2rem;
-            margin-bottom: var(--spacing-xs);
-        }
-        
-        /* FAQ Items */
-        .faq-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-lg);
-        }
-        
-        .faq-item {
-            margin-bottom: var(--spacing-lg);
-        }
-        
-        .faq-question {
-            font-size: var(--font-size-h3);
-            font-weight: 600;
-            margin-bottom: var(--spacing-sm);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-        
-        .faq-answer {
-            font-size: var(--font-size-body);
-            opacity: 0.9;
-        }
-        
-        .solution-decorative {
-            position: absolute;
-            top: var(--spacing-lg);
-            right: var(--spacing-lg);
-            font-size: 2rem;
-            opacity: 0.6;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: var(--spacing-2xl) 0;
-            margin-top: var(--spacing-2xl);
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: var(--spacing-lg);
-            font-size: var(--font-size-body);
-            font-weight: 500;
-        }
-        
-        .footer-links a {
-            color: var(--primary-blue);
-            text-decoration: none;
-            transition: var(--transition-fast);
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-pink);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-            }
-            
-            .hero-text {
-                max-width: 100%;
-            }
-            
-            .hero-title {
-                font-size: clamp(2rem, 8vw, 3rem);
-            }
-            
-            .hero-cta {
-                position: static;
-                margin-top: var(--spacing-lg);
-            }
-            
-            .hero-illustration {
-                flex: none;
-                width: 100%;
-                max-width: 400px;
-                height: 320px;
-            }
-            
-            .hero-image {
-                width: 320px;
-                height: 260px;
-            }
-            
-            .feature-icons {
-                justify-content: center;
-            }
-            
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .faq-columns {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Fixed Navigation -->
+    <nav class="fixed-nav" id="fixedNav">
+        <div class="nav-container">
+            <div class="nav-logo">LingoSwitch</div>
+            <a href="#get-started" class="nav-cta">Начать учить мои слова</a>
+        </div>
+    </nav>
+    
     <div class="container">
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero fade-in">
             <div class="hero-brand">LingoSwitch</div>
-            <a href="#" class="hero-cta">Get Started</a>
+            <a href="#get-started" class="hero-cta">Начать учить мои слова</a>
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">Learn a New Language Easily</h1>
+                    <h1 class="hero-title">Пополнение словарного запаса без изменения ежедневной рутины</h1>
+                    <p class="hero-desc">LingoSwitch интегрируется в привычные формы потребления информации не требуя дополнительного времени</p>
                 </div>
                 <div class="hero-illustration">
-                    <div class="decorative-waves">〰️〰️</div>
-                    <div class="decorative-letter">A</div>
                     <img src="hero-girl.png" alt="Девушка в наушниках машет рукой" class="hero-image">
                 </div>
             </div>
         </section>
-
-        <!-- Main Content Grid -->
-        <div class="grid">
-            <!-- Problem Card -->
-            <div class="card card-problem fade-in">
+        <!-- Problem + Solution Row -->
+        <div class="cards-row">
+            <section class="card card-problem fade-in">
                 <div class="card-header">
                     <span class="icon-emoji">😟</span>
-                    Problem
+                    Не хватает времени на учебу?
                 </div>
                 <div class="card-content">
-                    <div class="card-title">Struggling with traditional methods?</div>
-                    <div class="card-content-bottom">
-                        <div class="card-title">Struggling with traditional methods?</div>
-                        <span class="icon-emoji">😟</span>
-                    </div>
+                    <div class="card-title">Ежедневный поток задач оставляет минимум времени на учебу.</div>
+                    <p>Традиционные курсы и приложения требуют выделять часы на уроки и отвлекают от работы. Из-за этого новые слова быстро забываются, а уверенность при чтении деловых публикаций на иностранном языке так и не появляется.</p>
                 </div>
-            </div>
-
-            <!-- Solution Card -->
-            <div class="card card-solution fade-in">
+            </section>
+            <section class="card card-solution fade-in">
                 <div class="card-header">
                     <span class="icon-emoji">💡</span>
-                    Solution
+                    Учитесь в своем ритме
                 </div>
-                <div class="card-title">Try our innovative approach!</div>
-                <div class="solution-decorative">💡✨</div>
-            </div>
-
-            <!-- Benefits Card -->
-            <div class="card card-benefits fade-in">
-                <div class="card-header">
-                    <span class="icon-emoji">⭐</span>
-                    Benefits
+                <div class="card-content">
+                    <div class="card-title">LingoSwitch превращает каждую статью и новость в Телеграме в интерактивный урок</div>
+                    <p>Бот автоматически заменяет часть русских слов на английские, а затем постепенно увеличивает долю «иностранных» фраз. Такой подход обеспечивает запоминание через контекст и ассоциации, без лишних переключений между приложениями.</p>
                 </div>
-                <div class="card-title">Interactive Lessons</div>
-                <div class="feature-icons">
-                    <div class="feature-icon">
-                        <div class="feature-icon-symbol">💬</div>
-                        <div>Interactive Lessons</div>
-                    </div>
-                    <div class="feature-icon">
-                        <div class="feature-icon-symbol">⭐</div>
-                        <div>Personalized Plans</div>
-                    </div>
-                    <div class="feature-icon">
-                        <div class="feature-icon-symbol">💬</div>
-                        <div>24/7 Practice</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Card -->
-            <div class="card card-faq fade-in">
-                <div class="card-header">
-                    <span class="icon-emoji">❓</span>
-                    FAQ
-                </div>
-                
-                <div class="faq-columns">
-                    <div class="faq-left">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>✅</span>
-                                How do I start?
-                            </div>
-                            <div class="faq-answer">Sign up and choose your language!</div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <span>✅</span>
-                                What languages can I learn?
-                            </div>
-                            <div class="faq-answer">We offer courses in 20+ languages!</div>
-                        </div>
-                    </div>
-
-                    <div class="faq-right">
-                        <div class="faq-item">
-                            <div class="faq-question">How do I start?</div>
-                            <div class="faq-answer">Sign up and choose your language!</div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">What languages can I learn?</div>
-                            <div class="faq-answer">We offer courses in 20+ languages!</div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">Is there a free trial?</div>
-                            <div class="faq-answer">Yes, get 7 days free access!</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
+
+        <!-- Benefits Section -->
+        <section class="card card-benefits fade-in">
+            <div class="benefits-header">
+                <span class="icon-emoji">⭐</span>
+                <span class="benefits-title">Ваши преимущества</span>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card"><span class="benefit-icon">🧠</span><span><b>Учиться без лишних усилий</b> — слово попадает в контекст привычного текста, а не в список для зубрёжки</span></div>
+                <div class="benefit-card"><span class="benefit-icon">🔄</span><span><b>Автоматическая замена терминов</b> прямо в сообщениях Telegram</span></div>
+                <div class="benefit-card"><span class="benefit-icon">📈</span><span><b>Постепенное погружение</b> — доля иностранных слов растет по мере адаптации</span></div>
+                <div class="benefit-card"><span class="benefit-icon">⚙️</span><span><b>Гибкие настройки уровня замены</b>: от отдельных слов до целых предложений</span></div>
+                <div class="benefit-card"><span class="benefit-icon">💡</span><span><b>Усиленная ассоциация</b> — слова запоминаются надолго благодаря окружению</span></div>
+                <div class="benefit-card"><span class="benefit-icon">📝</span><span><b>Предложения вариантов перевода и мини-тесты</b> прямо в чате</span></div>
+                <div class="benefit-card"><span class="benefit-icon">💬</span><span><b>Без отвлекающих интерфейсов</b> — всё происходит в привычном мессенджере</span></div>
+                <div class="benefit-card"><span class="benefit-icon">🔔</span><span><b>Интеграция с выбранными каналами и скрапинг новостей</b> (в разработке)</span></div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="card card-faq fade-in">
+            <div class="faq-accordion">
+                <div class="faq-accordion-card">
+                    <button class="faq-accordion-question">Как начать пользоваться LingoSwitch?<span class="faq-accordion-toggle">+</span></button>
+                    <div class="faq-accordion-answer">
+                        Зарегистрируйтесь и выберите язык — бот начнет заменять слова в ваших Telegram-каналах.
+                    </div>
+                </div>
+                <div class="faq-accordion-card">
+                    <button class="faq-accordion-question">Можно ли задать свой словарь «известных» слов?<span class="faq-accordion-toggle">+</span></button>
+                    <div class="faq-accordion-answer">
+                        Да, вы можете добавить слова, которые уже знаете, чтобы бот их не подставлял.
+                    </div>
+                </div>
+                <div class="faq-accordion-card">
+                    <button class="faq-accordion-question">Будет ли бот сам «сканировать» каналы?<span class="faq-accordion-toggle">+</span></button>
+                    <div class="faq-accordion-answer">
+                        В ближайших обновлениях появится автоматический скан выбранных каналов и новостей.
+                    </div>
+                </div>
+                <div class="faq-accordion-card">
+                    <button class="faq-accordion-question">Сколько стоит премиум-доступ?<span class="faq-accordion-toggle">+</span></button>
+                    <div class="faq-accordion-answer">
+                        Стоимость и условия премиум-доступа будут объявлены после запуска бета-тестирования.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-summary" style="margin-top: var(--spacing-lg);">
+                <b>LingoSwitch помогает строить уверенность при чтении и переписке на английском через привычные задачи — без потери времени и мотивации.</b>
+            </div>
+        </section>
 
         <!-- Footer -->
         <footer class="footer">
@@ -589,23 +118,6 @@
         </footer>
     </div>
 
-    <script>
-        // Simple animation trigger
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    }
-                });
-            });
-            
-            cards.forEach(card => {
-                observer.observe(card);
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html> 
