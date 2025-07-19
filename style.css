@@ -60,6 +60,60 @@
     box-sizing: border-box;
 }
 
+/* Fixed Navigation */
+.fixed-nav {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-soft);
+    z-index: 1000;
+    transition: top 0.3s ease;
+}
+
+.fixed-nav.show {
+    top: 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: var(--font-size-h3);
+    font-weight: 700;
+    color: var(--primary-pink);
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-cta {
+    background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-blue) 100%);
+    color: var(--neutral-white);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-soft);
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
 body {
     font-family: var(--font-family);
     line-height: 1.5;
@@ -102,8 +156,9 @@ body::before {
 
 /* Hero Section */
 .hero {
+    margin-top: var(--spacing-2xl);
     background: linear-gradient(135deg, var(--primary-pink) 0%, var(--primary-blue) 100%);
-    padding: var(--spacing-2xl) var(--spacing-2xl) 0 var(--spacing-2xl);
+    padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-2xl) var(--spacing-2xl);
     border-radius: var(--radius-3xl);
     margin-bottom: var(--spacing-2xl);
     color: var(--neutral-white);
@@ -115,6 +170,7 @@ body::before {
     font-size: var(--font-size-h2);
     font-weight: 700;
     margin-bottom: var(--spacing-md);
+    animation: fadeInDown 0.8s ease-out;
 }
 
 .hero-content {
@@ -128,6 +184,7 @@ body::before {
 .hero-text {
     flex: 1;
     max-width: 55%;
+    z-index: 2;
 }
 
 .hero-title {
@@ -135,6 +192,15 @@ body::before {
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: var(--spacing-lg);
+    z-index: 2;
+}
+
+.hero-desc {
+    font-size: var(--font-size-h3);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.95;
+    z-index: 2;
 }
 
 .hero-cta {
@@ -151,6 +217,7 @@ body::before {
     position: absolute;
     top: var(--spacing-xl);
     right: var(--spacing-xl);
+    animation: buttonPulse 2s ease-in-out infinite;
 }
 
 .hero-cta:hover {
@@ -161,11 +228,11 @@ body::before {
 .hero-illustration {
     position: absolute;
     top: 50%;
-    right: var(--spacing-3xl);
+    right: var(--spacing-xs);
     transform: translateY(-50%);
     flex: none;
-    width: 450px;
-    height: 360px;
+    width: 650px;
+    height: 550px;
     background: transparent;
     display: flex;
     align-items: flex-end;
@@ -173,7 +240,7 @@ body::before {
     overflow: visible;
     margin: 0;
     padding: 0;
-    z-index: 2;
+    z-index: 0;
 }
 
 .hero-image {
@@ -209,6 +276,28 @@ body::before {
     50% { transform: translateY(-10px); }
 }
 
+@keyframes buttonPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: var(--shadow-soft);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: var(--shadow-colored);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Cards */
 .card {
     padding: var(--spacing-xl);
@@ -217,6 +306,7 @@ body::before {
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden;
+    margin-bottom: var(--spacing-2xl);
 }
 
 .card:hover {
@@ -237,13 +327,12 @@ body::before {
 .card-benefits {
     background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-pink) 100%);
     color: var(--neutral-white);
-    margin-bottom: var(--spacing-3xl);
 }
 
 .card-faq {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
     color: var(--neutral-white);
-    margin-top: var(--spacing-3xl);
+    margin-bottom: 0;
 }
 
 .card-header {
@@ -274,6 +363,7 @@ body::before {
 .card-benefits .card-header {
     background: var(--secondary-yellow);
     color: var(--neutral-dark-text);
+    margin-bottom: var(--spacing-2xl);
 }
 
 .card-problem .card-content-bottom {
@@ -293,7 +383,7 @@ body::before {
 .card-content {
     font-size: var(--font-size-body);
     line-height: 1.6;
-    padding-top: 3.5rem;
+    padding-top: 5.0rem;
 }
 
 /* Icons */
@@ -403,23 +493,12 @@ body::before {
 /* Responsive Design */
 @media (max-width: 900px) {
     .hero-illustration {
-        width: 320px;
-        height: 220px;
-        right: var(--spacing-xl);
+        display: none;
     }
 }
 @media (max-width: 600px) {
     .hero-illustration {
-        position: static;
-        transform: none;
-        width: 100%;
-        height: auto;
-        margin: 0 auto;
-        justify-content: center;
-    }
-    .hero-image {
-        width: 100%;
-        height: auto;
+        display: none;
     }
 }
 @media (max-width: 768px) {
@@ -443,15 +522,7 @@ body::before {
     }
     
     .hero-illustration {
-        flex: none;
-        width: 100%;
-        max-width: 400px;
-        height: 320px;
-    }
-    
-    .hero-image {
-        width: 320px;
-        height: 260px;
+        display: none;
     }
     
     .feature-icons {
@@ -648,5 +719,18 @@ body::before {
     .hero-cta-under-hero .hero-cta {
         font-size: var(--font-size-body);
         padding: var(--spacing-md) var(--spacing-xl);
+    }
+    
+    .nav-container {
+        padding: var(--spacing-sm) var(--spacing-lg);
+    }
+    
+    .nav-logo {
+        font-size: var(--font-size-body);
+    }
+    
+    .nav-cta {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-body);
     }
 } 

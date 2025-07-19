@@ -23,4 +23,21 @@ document.addEventListener('DOMContentLoaded', function() {
             card.classList.toggle('open');
         });
     });
+
+    // Fixed Navigation
+    const fixedNav = document.getElementById('fixedNav');
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Показываем меню при скролле вниз больше 200px
+        if (scrollTop > 200) {
+            fixedNav.classList.add('show');
+        } else {
+            fixedNav.classList.remove('show');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
 }); 
