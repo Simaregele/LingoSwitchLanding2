@@ -118,7 +118,12 @@ body {
     font-family: var(--font-family);
     line-height: 1.5;
     color: var(--neutral-dark-text);
-    background: url('background.png') fixed center/cover no-repeat;
+    background: linear-gradient(135deg, 
+        #FF1B6B 0%, 
+        #45CAFF 25%, 
+        #6B46C1 50%, 
+        #FF8A00 75%, 
+        #FFD700 100%);
     background-attachment: fixed;
     min-height: 100vh;
 }
