@@ -739,3 +739,8 @@ body::before {
         font-size: var(--font-size-body);
     }
 } 
+
+.card-problem,
+.card-solution {
+    margin-bottom: 0;
+} 
